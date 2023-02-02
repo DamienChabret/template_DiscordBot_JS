@@ -1,5 +1,5 @@
 /**
- * 
+ * Commande paypal qui renvoie un message quand on écrit "nyp paypal"
  * @param {Message de l'utilisateur} message 
  */
 function paypalToMe(message){

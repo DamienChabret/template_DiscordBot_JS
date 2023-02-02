@@ -1,5 +1,5 @@
 /**
- * test
+ * Commande qui répond pong quand on envoie ping
  * @param {message de l'utilisateur} message 
  */
 function pong(message){

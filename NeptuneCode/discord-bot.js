@@ -1,29 +1,28 @@
-// --------------------------------- CLASSE BOT DISCORD----------------------------------------- 
+// --------------------------------- CLASSE BOT DISCORD ----------------------------------------- 
 // Gère la connexion au client
 // Controller qui execute les actions selon le message envoyé
 // ----------------------------------------------------------------------------------------------
 
-// ------------------ VARIABLES 
-// Récupère les variables dans les fichiers 
-const { CLIENT_TOKEN } = require('./config.json')
-const { Client, GatewayIntentBits, MessageEmbed } = require('discord.js');
-
+// --------------------------------------------------- VARIABLES 
 // Récupères les fichiers commandes
 var fs = require("fs");
 var vm = require('vm');
 vm.runInThisContext(fs.readFileSync(__dirname + "/commandes/commande_general.js"));
 vm.runInThisContext(fs.readFileSync(__dirname + "/commandes/commande_paypal.js"));
 
+// Récupère les variables dans les fichiers 
+const { CLIENT_TOKEN } = require('./config.json')
+const { Client, GatewayIntentBits, MessageEmbed } = require('discord.js');
+
 // Instancie client
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]});
 
 
-// ------------------ PROGRAMME PRINCIPAL
-
+// --------------------------------------------------- PROGRAMME PRINCIPAL
 reponseMessage();
 clientLogin();
 
-// ----------------- METHODES 
+// --------------------------------------------------- METHODES 
 /**
  * Quand le client est prêt
  */
