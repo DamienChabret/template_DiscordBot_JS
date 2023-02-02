@@ -1,25 +1,53 @@
-// ---------------- VARIABLES
-// Récupère les variables dans les bon fichiers 
+// --------------------------------- CLASSE BOT DISCORD----------------------------------------- 
+// Gère la connexion au client
+// Controller qui execute les actions selon le message envoyé
+// ----------------------------------------------------------------------------------------------
+
+// ------------------ VARIABLES 
+// Récupère les variables dans les fichiers 
 const { CLIENT_TOKEN } = require('./config.json')
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits, MessageEmbed } = require('discord.js');
+
+// Récupères les fichiers commandes
+var fs = require("fs");
+var vm = require('vm');
+vm.runInThisContext(fs.readFileSync(__dirname + "/commandes/commande_general.js"));
+vm.runInThisContext(fs.readFileSync(__dirname + "/commandes/commande_paypal.js"));
 
 // Instancie client
-const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages]});
+const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]});
 
 
 // ------------------ PROGRAMME PRINCIPAL
+
+reponseMessage();
 clientLogin();
-
-
 
 // ----------------- METHODES 
 /**
  * Quand le client est prêt
- * // https://discordjs.guide/creating-your-bot/#using-config-json
  */
 function clientLogin(){
    client.on('ready', () => {
       console.log(`Logged in as ${client.user.tag}!`);
    })
    client.login(CLIENT_TOKEN); // Connecte le bot avec le secret tokken
+}
+
+/**
+ * Repond selon le message
+ */
+function reponseMessage(){
+   client.on('messageCreate', (message) => {
+      switch(message.content){
+         case "ping":
+            pong(message);
+            break;
+         case "nyp paypal":
+            paypalToMe(message);
+            console.log("paypal");
+            break;
+      }
+   });
+   
 }
