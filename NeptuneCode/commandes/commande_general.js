@@ -7,3 +7,7 @@ function pong(message){
     // channel.bulkDelete(100); 
     channel.send("Ping c'est moi !");
  }
+
+ function help(){
+    
+ }

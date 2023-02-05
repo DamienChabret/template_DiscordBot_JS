@@ -21,6 +21,7 @@ const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits
 // --------------------------------------------------- PROGRAMME PRINCIPAL
 reponseMessage();
 clientLogin();
+test();
 
 // --------------------------------------------------- METHODES 
 /**
@@ -39,14 +40,19 @@ function clientLogin(){
 function reponseMessage(){
    client.on('messageCreate', (message) => {
       switch(message.content){
+         // Message ping test
          case "ping":
             pong(message);
             break;
+         // Message paypal
          case "nyp paypal":
             paypalToMe(message);
             console.log("paypal");
             break;
       }
    });
-   
+}
+
+function test(){
+
 }
