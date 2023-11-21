@@ -1,8 +1,8 @@
 # Nyx's Bot
 
-Nyx bot est un bot développé dans un cadre personnel. Son utilité pour le moment est en cours de réflexion.
+Nyx bot est un bot développé dans un cadre personnel. Son utilité n'est pas encore décidée.
 
-Son préfixe est : `nyp!` afin de pouvoir l'utiliser.  
+Le préfixe qui permet son utilisation est : `nyp!`.  
 
 Il possède plusieurs commandes :    
 ``nyp! help`` : pour obtenir de l'aide  
